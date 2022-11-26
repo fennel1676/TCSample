@@ -27,6 +27,7 @@ namespace TChartSampleTest
 
 
 
+
             Points point1 = new Points();
 
             point1.FillSampleValues(5);
