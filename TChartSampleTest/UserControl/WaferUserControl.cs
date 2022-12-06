@@ -70,7 +70,7 @@ namespace TChartSampleTest
             tChart.Axes.Left.Labels.Style = Steema.TeeChart.AxisLabelStyle.Value;
             tChart.Axes.Left.Maximum = 170d;
             tChart.Axes.Left.Minimum = -170d;
-
+            //
 
         }
 
