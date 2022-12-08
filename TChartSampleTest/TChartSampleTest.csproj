@@ -92,6 +92,12 @@
     <Compile Include="Form4.Designer.cs">
       <DependentUpon>Form4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form5.Designer.cs">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TChartUserControl\ChipInformation.cs" />
@@ -112,6 +118,12 @@
       <DependentUpon>WaferControl.cs</DependentUpon>
     </Compile>
     <Compile Include="TChartUserControl\WaferData.cs" />
+    <Compile Include="UserControl\FieldUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\FieldUserControl.Designer.cs">
+      <DependentUpon>FieldUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\WaferUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -133,6 +145,9 @@
     <EmbeddedResource Include="Form4.resx">
       <DependentUpon>Form4.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form5.resx">
+      <DependentUpon>Form5.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -145,6 +160,9 @@
     </Compile>
     <EmbeddedResource Include="TChartUserControl\WaferControl.resx">
       <DependentUpon>WaferControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\FieldUserControl.resx">
+      <DependentUpon>FieldUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\WaferUserControl.resx">
       <DependentUpon>WaferUserControl.cs</DependentUpon>
