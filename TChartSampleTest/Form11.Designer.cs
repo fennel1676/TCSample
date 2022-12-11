@@ -30,6 +30,9 @@
         {
             Steema.TeeChart.Margins margins1 = new Steema.TeeChart.Margins();
             this.tChart = new Steema.TeeChart.TChart();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tChart
@@ -912,7 +915,7 @@
             this.tChart.Legend.Title.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart.Legend.Title.Shadow.Brush.Solid = true;
             this.tChart.Legend.Title.Shadow.Brush.Visible = true;
-            this.tChart.Location = new System.Drawing.Point(0, 0);
+            this.tChart.Location = new System.Drawing.Point(3, 3);
             this.tChart.Name = "tChart";
             // 
             // 
@@ -953,7 +956,7 @@
             margins1.Right = 100;
             margins1.Top = 100;
             this.tChart.Printer.Margins = margins1;
-            this.tChart.Size = new System.Drawing.Size(501, 448);
+            this.tChart.Size = new System.Drawing.Size(495, 414);
             // 
             // 
             // 
@@ -1198,15 +1201,41 @@
             this.tChart.AfterDraw += new Steema.TeeChart.PaintChartEventHandler(this.tChart1_AfterDraw);
             this.tChart.BeforeDrawSeries += new Steema.TeeChart.PaintChartEventHandler(this.tChart1_BeforeDrawSeries);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.tChart, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.97321F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.026786F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(501, 448);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 423);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 22);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form11
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 448);
-            this.Controls.Add(this.tChart);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form11";
             this.Text = "Form11";
             this.Load += new System.EventHandler(this.Form11_Load);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1214,5 +1243,7 @@
         #endregion
 
         private Steema.TeeChart.TChart tChart;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button button1;
     }
 }

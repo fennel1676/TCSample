@@ -297,8 +297,7 @@ namespace TChartSampleTest
 
 
                 g.TextOut(chartLeft - textWidth - 2, (posItem1 + posItem2 - textHeight) / 2, field.Key.ToString());
-            }           
-
+            }          
         }
 
         private void tChart_BeforeDrawSeries(object sender, Steema.TeeChart.Drawing.Graphics3D g)
