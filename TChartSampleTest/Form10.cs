@@ -19,7 +19,7 @@ namespace TChartSampleTest
 
         private void Form10_Load(object sender, EventArgs e)
         {
-
+            waferUserControl1.InitWaferChart();
         }
     }
 }
