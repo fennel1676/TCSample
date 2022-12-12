@@ -37,19 +37,19 @@ namespace TChartSampleTest
         {
             InitializeComponent();
 
-            g_field.offset_x = 0;
-            g_field.offset_y = -4.1545;
-            g_field.pitch_x = 22.896;
-            g_field.pitch_y = 25.131;
-            g_field.shot_x_count = 4;
-            g_field.shot_y_count = 3;
+            //g_field.offset_x = 0;
+            //g_field.offset_y = -4.1545;
+            //g_field.pitch_x = 22.896;
+            //g_field.pitch_y = 25.131;
+            //g_field.shot_x_count = 4;
+            //g_field.shot_y_count = 3;
 
-            //g_field.offset_x = 11.796;
-            //g_field.offset_y = 4.3175;
-            //g_field.pitch_x = 23.592;
-            //g_field.pitch_y = 32.735;
-            //g_field.shot_x_count = 6;
-            //g_field.shot_y_count = 5;
+            g_field.offset_x = 11.796;
+            g_field.offset_y = 4.3175;
+            g_field.pitch_x = 23.592;
+            g_field.pitch_y = 32.735;
+            g_field.shot_x_count = 6;
+            g_field.shot_y_count = 5;
 
             //g_field.offset_x = 0;
             //g_field.offset_y = -5.74;
@@ -66,11 +66,11 @@ namespace TChartSampleTest
 
             tChart.Aspect.View3D = false;
             tChart.Panel.Color = Color.White;
-            tChart.Panel.MarginBottom = 2;
-            tChart.Panel.MarginLeft = 2;
-            tChart.Panel.MarginRight = 2;
-            tChart.Panel.MarginTop = 2;
-            tChart.Panel.MarginUnits = PanelMarginUnits.Percent;
+            tChart.Panel.MarginBottom = 4;
+            tChart.Panel.MarginLeft = 4;
+            tChart.Panel.MarginRight = 4;
+            tChart.Panel.MarginTop = 4;
+            tChart.Panel.MarginUnits = PanelMarginUnits.Pixels;
             tChart.Panel.Pen.Visible = false;
             tChart.Panel.Gradient.Visible = false;
             tChart.Panel.Bevel.Inner = Steema.TeeChart.Drawing.BevelStyles.None;
@@ -118,7 +118,16 @@ namespace TChartSampleTest
             tChart.Legend.Visible = false;
 
             InitWaferChart();
-           
+
+
+            //double a = 0d;
+            //double b = 300d;
+            //double c = 150d;
+            //double d = 5000d;
+            //double e1 = 10000d;
+
+            //double result = Calculate_ZeroSpan_HighLow_Scale(a, b, c, d, e1);
+
         }
 
         private void SetAxes()
@@ -255,11 +264,16 @@ namespace TChartSampleTest
             leftAxis.Increment = 1;// g_field.pitch_y;
             leftAxis.SetMinMax(-50, 50);
 
+            double fieldX01 = -50d;
+            double fieldX11 = 50d;
+            double fieldY01 = -50d;
+            double fieldY11 = 50d;
 
-            //double fieldX0 = fieldXPos + g_field.offset_x - g_field.pitch_x / 2;
-            //double fieldX1 = fieldXPos + g_field.offset_x + g_field.pitch_x / 2;
-            //double fieldY0 = fieldYPos + g_field.offset_y - g_field.pitch_y / 2;
-            //double fieldY1 = fieldYPos + g_field.offset_y + g_field.pitch_y / 2;
+
+            //double fieldX0 = 50 + g_field.offset_x - g_field.pitch_x / 2;
+            //double fieldX1 = 50 + g_field.offset_x + g_field.pitch_x / 2;
+            //double fieldY0 = 50 + g_field.offset_y - g_field.pitch_y / 2;
+            //double fieldY1 = 50 + g_field.offset_y + g_field.pitch_y / 2;
 
             double fieldX0 = -50d;
             double fieldX1 = 50d;
@@ -277,7 +291,6 @@ namespace TChartSampleTest
 
                 for (int countY = 0; countY < g_field.shot_y_count; countY++)
                 {
-
                     double dieYPos = fieldY0 + (dieYSize * countY);
 
                     Shape dieShape = GetDieShapeSeries(string.Format("{0},{1}", countX, countY), dieXPos, dieXPos + dieXSize, dieYPos, dieYPos + dieYSize);
@@ -501,12 +514,25 @@ namespace TChartSampleTest
                     double xxx1 = x1 - xx1;
                     double xxx2 = x2 - xx2;
 
+                    double point_x_pos = g_field.offset_x + xxx1;
+                    double point_y_pos = g_field.offset_y + xxx2;
 
-                    double point_x_pos = g_field.offset_x + (targetX / 1000.0 - g_field.pitch_x / 2.0);
-                    double point_y_pos = g_field.offset_y + (targetY / 1000.0 - g_field.pitch_y / 2.0);
 
-                    point_x_pos = 0d;
-                    point_y_pos = 0d;
+                    //g_field.offset_x = 11.796;
+                    //g_field.offset_y = 4.3175;
+                    //g_field.pitch_x = 23.592;
+                    //g_field.pitch_y = 32.735;
+                    //g_field.shot_x_count = 6;
+                    //g_field.shot_y_count = 5;
+
+                    double resultX = Calculate_ZeroSpan_HighLow_Scale(-50d, 50d, point_x_pos, g_field.pitch_x, g_field.pitch_y);
+                    double resultY = Calculate_ZeroSpan_HighLow_Scale(-50d, 50d, point_y_pos, g_field.pitch_x, g_field.pitch_y);
+
+                    //double point_x_pos = g_field.offset_x + (targetX / 1000.0 - g_field.pitch_x / 2.0);
+                    //double point_y_pos = g_field.offset_y + (targetY / 1000.0 - g_field.pitch_y / 2.0);
+
+                    // point_x_pos = 0d;
+                    // point_y_pos = 0d;
 
                     specPoints.Add(point_x_pos, point_y_pos, "", Color.Red);
                 }
@@ -568,6 +594,26 @@ namespace TChartSampleTest
 
             InitializePointsSeries("aaa");
             DrawTrendChart2(dt);
+
+
+           
+
+        }
+
+
+        double Calculate_ZeroSpan_HighLow_Scale(double fAdcZero, double fAdcSpan, double fAdcData, double fScaleLow, double fScaleHigh)
+        {
+            double fScaleData = 0;
+            if ((fAdcZero == 0 && fAdcSpan == 0) || ((fAdcZero - fAdcSpan) == 0))       // 나누기 값이 0이 되면 시스템 폴트가 나므로 나누기 값을 검사한다.(0 이외의 값이면 문제 없다.)
+                fScaleData = 0;
+            else
+                fScaleData = fScaleLow - (((fAdcZero - fAdcData) * (fScaleLow - fScaleHigh)) / (fAdcZero - fAdcSpan));
+
+            if (fScaleData > fScaleHigh)
+                fScaleData = fScaleHigh;
+            if (fScaleData < fScaleLow)
+                fScaleData = fScaleLow;
+            return fScaleData;
         }
     }
 }

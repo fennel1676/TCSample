@@ -272,7 +272,13 @@ namespace TChartSampleTest
                     g.Line(new Point(posItem2, chartBottom), new Point(posItem2, chartBottom + 4));
                 }
 
-                g.TextOut((posItem1 + posItem2 - textHeight) / 2, chartBottom, + 2 , textOut);
+
+                if ((field.Value.Item1 + field.Value.Item2 + 6) / 2 >= tChart.Axes.Bottom.Minimum &&
+                    (field.Value.Item1 + field.Value.Item2 - 6) / 2 <= tChart.Axes.Bottom.Maximum)
+                {
+                    g.TextOut((posItem1 + posItem2 - textWidth) / 2, chartBottom, + 2, textOut);
+                }
+                
             }
 
             //y
@@ -295,8 +301,12 @@ namespace TChartSampleTest
                     g.Line(new Point(posItem2, chartLeft), new Point(posItem2, chartLeft - 4));
                 }
 
-
-                g.TextOut(chartLeft - textWidth - 2, (posItem1 + posItem2 - textHeight) / 2, field.Key.ToString());
+                if ((field.Value.Item1 + field.Value.Item2 + 6) / 2 >= tChart.Axes.Left.Minimum &&
+                    (field.Value.Item1 + field.Value.Item2 - 6) / 2 <= tChart.Axes.Left.Maximum)
+                {
+                    g.TextOut(chartLeft - textWidth - 2, (posItem1 + posItem2 - textHeight) / 2, field.Key.ToString());
+                }
+              
             }          
         }
 
