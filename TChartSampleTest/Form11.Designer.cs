@@ -915,7 +915,8 @@
             this.tChart.Legend.Title.Shadow.Brush.Color = System.Drawing.Color.DarkGray;
             this.tChart.Legend.Title.Shadow.Brush.Solid = true;
             this.tChart.Legend.Title.Shadow.Brush.Visible = true;
-            this.tChart.Location = new System.Drawing.Point(3, 3);
+            this.tChart.Location = new System.Drawing.Point(3, 4);
+            this.tChart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tChart.Name = "tChart";
             // 
             // 
@@ -956,7 +957,7 @@
             margins1.Right = 100;
             margins1.Top = 100;
             this.tChart.Printer.Margins = margins1;
-            this.tChart.Size = new System.Drawing.Size(495, 414);
+            this.tChart.Size = new System.Drawing.Size(1130, 981);
             // 
             // 
             // 
@@ -1209,18 +1210,20 @@
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.97321F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.026786F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(501, 448);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1136, 1053);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(3, 423);
+            this.button1.Location = new System.Drawing.Point(3, 993);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 22);
+            this.button1.Size = new System.Drawing.Size(86, 28);
             this.button1.TabIndex = 1;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -1228,10 +1231,11 @@
             // 
             // Form11
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(501, 448);
+            this.ClientSize = new System.Drawing.Size(1136, 1053);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form11";
             this.Text = "Form11";
             this.Load += new System.EventHandler(this.Form11_Load);

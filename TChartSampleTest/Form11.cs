@@ -18,6 +18,7 @@ namespace TChartSampleTest
     {
         public FieldInfo g_field = new FieldInfo();
         public double waferRadius = 100d;
+        public double fieldRadius = 50d;
 
         List<Shape> fieldShapeList = new List<Shape>();
         List<Shape> dieShapeList = new List<Shape>();
@@ -37,26 +38,7 @@ namespace TChartSampleTest
         {
             InitializeComponent();
 
-            //g_field.offset_x = 0;
-            //g_field.offset_y = -4.1545;
-            //g_field.pitch_x = 22.896;
-            //g_field.pitch_y = 25.131;
-            //g_field.shot_x_count = 4;
-            //g_field.shot_y_count = 3;
-
-            g_field.offset_x = 11.796;
-            g_field.offset_y = 4.3175;
-            g_field.pitch_x = 23.592;
-            g_field.pitch_y = 32.735;
-            g_field.shot_x_count = 6;
-            g_field.shot_y_count = 5;
-
-            //g_field.offset_x = 0;
-            //g_field.offset_y = -5.74;
-            //g_field.pitch_x = 25.34;
-            //g_field.pitch_y = 30.42;
-            //g_field.shot_x_count = 2;
-            //g_field.shot_y_count = 6;
+            
         }
 
         private void Form11_Load(object sender, EventArgs e)
@@ -82,8 +64,8 @@ namespace TChartSampleTest
 
             tChart.Header.Visible = false;
             tChart.SubHeader.Visible = false;
-            //tChart.Footer.Visible = false;
-            //tChart.SubFooter.Visible = false;
+            tChart.Footer.Visible = false;
+            tChart.SubFooter.Visible = false;
 
             tChart.Axes.Left.Title.Visible = false;
             tChart.Axes.Left.AxisPen.Visible = false;
@@ -97,6 +79,7 @@ namespace TChartSampleTest
             tChart.Axes.Left.Increment = 1;
             tChart.Axes.Left.Labels.Style = AxisLabelStyle.None;
             tChart.Axes.Left.Labels.Pen.Color = Color.White;
+            tChart.Axes.Left.Labels.Font.Color = Color.White;
             //tChart.Axes.Left.Labels.ValueFormat = "#.0";
             tChart.Axes.Left.Labels.Visible = false;
 
@@ -112,6 +95,7 @@ namespace TChartSampleTest
             tChart.Axes.Bottom.Increment = 1;
             tChart.Axes.Bottom.Labels.Style = AxisLabelStyle.None;
             tChart.Axes.Bottom.Labels.Pen.Color = Color.White;
+            tChart.Axes.Bottom.Labels.Font.Color = Color.White;
             //tChart.Axes.Bottom.Labels.ValueFormat = "#.0";
             tChart.Axes.Bottom.Labels.Visible = false;
 
@@ -188,7 +172,7 @@ namespace TChartSampleTest
 
         public void InitWaferChart()
         {
-            tChart.AutoRepaint = false;
+           // tChart.AutoRepaint = false;
 
             tChart.Series.Clear();
             tChart.Tools.Clear();
@@ -240,6 +224,26 @@ namespace TChartSampleTest
             int indexX = 0;
             int indexY = 0;
 
+            //g_field.offset_x = 0;
+            //g_field.offset_y = -4.1545;
+            //g_field.pitch_x = 22.896;
+            //g_field.pitch_y = 25.131;
+            //g_field.shot_x_count = 4;
+            //g_field.shot_y_count = 3;
+
+            g_field.offset_x = 11.796;
+            g_field.offset_y = 4.3175;
+            g_field.pitch_x = 23.592;
+            g_field.pitch_y = 32.735;
+            g_field.shot_x_count = 6;
+            g_field.shot_y_count = 5;
+
+            //g_field.offset_x = 0;
+            //g_field.offset_y = -5.74;
+            //g_field.pitch_x = 25.34;
+            //g_field.pitch_y = 30.42;
+            //g_field.shot_x_count = 2;
+            //g_field.shot_y_count = 6;
 
             // double dieXSize = (g_field.pitch_x / g_field.shot_x_count) * 2;
             // double dieYSize = (g_field.pitch_y / g_field.shot_y_count) * 2;
@@ -256,18 +260,19 @@ namespace TChartSampleTest
             double yVal = g_field.offset_y - 0;
 
 
+
             Axis bottomAxis = tChart.Axes.Bottom;
-            bottomAxis.Increment = 1;// g_field.pitch_x;
-            bottomAxis.SetMinMax(-50, 50);
+            bottomAxis.Increment =  g_field.pitch_x;
+            bottomAxis.SetMinMax(-fieldRadius, fieldRadius);
 
             Axis leftAxis = tChart.Axes.Left;
-            leftAxis.Increment = 1;// g_field.pitch_y;
-            leftAxis.SetMinMax(-50, 50);
+            leftAxis.Increment =  g_field.pitch_y;
+            leftAxis.SetMinMax(-fieldRadius, fieldRadius);
 
-            double fieldX01 = -50d;
-            double fieldX11 = 50d;
-            double fieldY01 = -50d;
-            double fieldY11 = 50d;
+            //double fieldX01 = -50d;
+            //double fieldX11 = 50d;
+            //double fieldY01 = -50d;
+            //double fieldY11 = 50d;
 
 
             //double fieldX0 = 50 + g_field.offset_x - g_field.pitch_x / 2;
@@ -275,13 +280,13 @@ namespace TChartSampleTest
             //double fieldY0 = 50 + g_field.offset_y - g_field.pitch_y / 2;
             //double fieldY1 = 50 + g_field.offset_y + g_field.pitch_y / 2;
 
-            double fieldX0 = -50d;
-            double fieldX1 = 50d;
-            double fieldY0 = -50d;
-            double fieldY1 = 50d;
+            double fieldX0 = -fieldRadius;
+            double fieldX1 = fieldRadius;
+            double fieldY0 = -fieldRadius;
+            double fieldY1 = fieldRadius;
 
-            double dieXSize = (50d / g_field.shot_x_count) * 2;
-            double dieYSize = (50d / g_field.shot_y_count) * 2;
+            double dieXSize = (fieldRadius / g_field.shot_x_count) * 2;
+            double dieYSize = (fieldRadius / g_field.shot_y_count) * 2;
 
 
             //die 추가
@@ -320,8 +325,8 @@ namespace TChartSampleTest
             //    }
             //}
 
-            tChart.AutoRepaint = true;
-            tChart.Refresh();
+            //tChart.AutoRepaint = true;
+            //tChart.Refresh();
         }
 
 
@@ -351,51 +356,51 @@ namespace TChartSampleTest
             int chartLeft = tChart.Chart.ChartRect.Left;
 
             //x
-            foreach (KeyValuePair<int, Tuple<double, double>> field in fieldXIndex)
-            {
-                textOut = field.Key.ToString();
-                textHeight = Convert.ToInt32(g.TextHeight(textOut));
-                textWidth = Convert.ToInt32(g.TextWidth(textOut));
+            //foreach (KeyValuePair<int, Tuple<double, double>> field in fieldXIndex)
+            //{
+            //    textOut = field.Key.ToString();
+            //    textHeight = Convert.ToInt32(g.TextHeight(textOut));
+            //    textWidth = Convert.ToInt32(g.TextWidth(textOut));
 
-                posItem1 = tChart.Axes.Bottom.CalcXPosValue(field.Value.Item1);
-                posItem2 = tChart.Axes.Bottom.CalcXPosValue(field.Value.Item2);
+            //    posItem1 = tChart.Axes.Bottom.CalcXPosValue(field.Value.Item1);
+            //    posItem2 = tChart.Axes.Bottom.CalcXPosValue(field.Value.Item2);
 
-                if (field.Value.Item1 >= tChart.Axes.Bottom.Minimum && field.Value.Item1 <= tChart.Axes.Bottom.Maximum)
-                {
-                    g.Line(new Point(posItem1, chartBottom), new Point(posItem1, chartBottom /*+ 4*/));
-                }
+            //    if (field.Value.Item1 >= tChart.Axes.Bottom.Minimum && field.Value.Item1 <= tChart.Axes.Bottom.Maximum)
+            //    {
+            //        g.Line(new Point(posItem1, chartBottom), new Point(posItem1, chartBottom /*+ 4*/));
+            //    }
 
-                if (field.Value.Item2 >= tChart.Axes.Bottom.Minimum && field.Value.Item2 <= tChart.Axes.Bottom.Maximum)
-                {
-                    g.Line(new Point(posItem2, chartBottom), new Point(posItem2, chartBottom /*+ 4*/));
-                }
+            //    if (field.Value.Item2 >= tChart.Axes.Bottom.Minimum && field.Value.Item2 <= tChart.Axes.Bottom.Maximum)
+            //    {
+            //        g.Line(new Point(posItem2, chartBottom), new Point(posItem2, chartBottom /*+ 4*/));
+            //    }
 
-                g.TextOut((posItem1 + posItem2 - textHeight) / 2, chartBottom, +2, textOut);
-            }
+            //    g.TextOut((posItem1 + posItem2 - textHeight) / 2, chartBottom, +2, textOut);
+            //}
 
-            //y
-            foreach (KeyValuePair<int, Tuple<double, double>> field in fieldYIndex)
-            {
-                textOut = field.Key.ToString();
-                textHeight = Convert.ToInt32(g.TextHeight(textOut));
-                textWidth = Convert.ToInt32(g.TextWidth(textOut));
+            ////y
+            //foreach (KeyValuePair<int, Tuple<double, double>> field in fieldYIndex)
+            //{
+            //    textOut = field.Key.ToString();
+            //    textHeight = Convert.ToInt32(g.TextHeight(textOut));
+            //    textWidth = Convert.ToInt32(g.TextWidth(textOut));
 
-                posItem1 = tChart.Axes.Left.CalcYPosValue(field.Value.Item1);
-                posItem2 = tChart.Axes.Left.CalcYPosValue(field.Value.Item2);
+            //    posItem1 = tChart.Axes.Left.CalcYPosValue(field.Value.Item1);
+            //    posItem2 = tChart.Axes.Left.CalcYPosValue(field.Value.Item2);
 
-                if (field.Value.Item1 >= tChart.Axes.Left.Minimum && field.Value.Item1 <= tChart.Axes.Left.Maximum)
-                {
-                    g.Line(new Point(posItem1, chartLeft), new Point(posItem1, chartLeft/* - 4*/));
-                }
+            //    if (field.Value.Item1 >= tChart.Axes.Left.Minimum && field.Value.Item1 <= tChart.Axes.Left.Maximum)
+            //    {
+            //        g.Line(new Point(posItem1, chartLeft), new Point(posItem1, chartLeft/* - 4*/));
+            //    }
 
-                if (field.Value.Item2 >= tChart.Axes.Left.Minimum && field.Value.Item2 <= tChart.Axes.Left.Maximum)
-                {
-                    g.Line(new Point(posItem2, chartLeft), new Point(posItem2, chartLeft/* - 4*/));
-                }
+            //    if (field.Value.Item2 >= tChart.Axes.Left.Minimum && field.Value.Item2 <= tChart.Axes.Left.Maximum)
+            //    {
+            //        g.Line(new Point(posItem2, chartLeft), new Point(posItem2, chartLeft/* - 4*/));
+            //    }
 
 
-                g.TextOut(chartLeft - textWidth - 2, (posItem1 + posItem2 - textHeight) / 2, field.Key.ToString());
-            }
+            //    g.TextOut(chartLeft - textWidth - 2, (posItem1 + posItem2 - textHeight) / 2, field.Key.ToString());
+            //}
 
         }
 
@@ -404,8 +409,8 @@ namespace TChartSampleTest
             int centerX = tChart.Axes.Bottom.CalcXPosValue(g_field.offset_x);
             int centerY = tChart.Axes.Left.CalcYPosValue(g_field.offset_y);
 
-            int width = tChart.Axes.Bottom.CalcSizeValue(waferRadius * 2d);
-            int height = tChart.Axes.Left.CalcSizeValue(waferRadius * 2d);
+            int width = tChart.Axes.Bottom.CalcSizeValue(waferRadius);// * 2d);
+            int height = tChart.Axes.Left.CalcSizeValue(waferRadius);// * 2d);
 
             //if (width > 0 && height > 0)
             //{
@@ -491,53 +496,7 @@ namespace TChartSampleTest
             }
         }
 
-        public void DrawTrendChart2(DataTable dt)
-        {
-            specPoints.Clear();
-
-            if (dt.Rows.Count > 0)
-            {
-                foreach (DataRow row in dt.Rows)
-                {
-                    double targetX = double.Parse(row["TargetX"].ToString());
-                    double targetY = double.Parse(row["TargetY"].ToString());
-
-                    //double fieldX = double.Parse(row["FieldX"].ToString());
-                    //double fieldY = double.Parse(row["FieldY"].ToString());
-
-                    double x1 = targetX / 1000.0;
-                    double x2 = targetY / 1000.0;
-
-                    double xx1 = g_field.pitch_x / 2.0;
-                    double xx2 = g_field.pitch_y / 2.0;
-
-                    double xxx1 = x1 - xx1;
-                    double xxx2 = x2 - xx2;
-
-                    double point_x_pos = g_field.offset_x + xxx1;
-                    double point_y_pos = g_field.offset_y + xxx2;
-
-
-                    //g_field.offset_x = 11.796;
-                    //g_field.offset_y = 4.3175;
-                    //g_field.pitch_x = 23.592;
-                    //g_field.pitch_y = 32.735;
-                    //g_field.shot_x_count = 6;
-                    //g_field.shot_y_count = 5;
-
-                    double resultX = Calculate_ZeroSpan_HighLow_Scale(-50d, 50d, point_x_pos, g_field.pitch_x, g_field.pitch_y);
-                    double resultY = Calculate_ZeroSpan_HighLow_Scale(-50d, 50d, point_y_pos, g_field.pitch_x, g_field.pitch_y);
-
-                    //double point_x_pos = g_field.offset_x + (targetX / 1000.0 - g_field.pitch_x / 2.0);
-                    //double point_y_pos = g_field.offset_y + (targetY / 1000.0 - g_field.pitch_y / 2.0);
-
-                    // point_x_pos = 0d;
-                    // point_y_pos = 0d;
-
-                    specPoints.Add(point_x_pos, point_y_pos, "", Color.Red);
-                }
-            }
-        }
+        
 
 
         public void InitializePointsSeries(string title)
@@ -586,18 +545,67 @@ namespace TChartSampleTest
             //dt.Rows.Add(9229.20036315918, 16239.2663955688, -101.36, 85.52);
 
             dt.Rows.Add(9229.20036315918, 15239.2663955688, -126.7, -36.16);
-            dt.Rows.Add(11.0390996560454, 29434.3070983887, -126.7, -5.74);
+            dt.Rows.Add(11467.0390996560454, 29434.3070983887, -126.7, -5.74);
             dt.Rows.Add(25316.40625, 29509.6130371094, -126.7, 24.68);
             dt.Rows.Add(25316.7896270752, 919.169428964355, -101.36, -66.58);
-            dt.Rows.Add(11.1974005993731, 993.984580039978, -101.36, -36.16);
+            dt.Rows.Add(114567.1974005993731, 993.984580039978, -101.36, -36.16);
             dt.Rows.Add(10698.8025665283, 15239.0880584717, -101.36, -5.74);
 
             InitializePointsSeries("aaa");
             DrawTrendChart2(dt);
+        }
+
+        public void DrawTrendChart2(DataTable dt)
+        {
+            specPoints.Clear();
 
 
-           
+            int chartBottom = tChart.Chart.ChartRect.Bottom;
+            int chartLeft = tChart.Chart.ChartRect.Left;
 
+
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    double targetX = double.Parse(row["TargetX"].ToString());
+                    double targetY = double.Parse(row["TargetY"].ToString());
+
+                    //double fieldX = double.Parse(row["FieldX"].ToString());
+                    //double fieldY = double.Parse(row["FieldY"].ToString());
+
+                    double x1 = targetX / 1000.0;
+                    double x2 = targetY / 1000.0;
+
+                    double xx1 = g_field.pitch_x / 2.0;
+                    double xx2 = g_field.pitch_y / 2.0;
+
+                    double xxx1 = x1 - xx1;
+                    double xxx2 = x2 - xx2;
+
+                    double point_x_pos = g_field.offset_x + xxx1;
+                    double point_y_pos = g_field.offset_y + xxx2;
+
+
+                    //g_field.offset_x = 11.796;
+                    //g_field.offset_y = 4.3175;
+                    //g_field.pitch_x = 23.592;
+                    //g_field.pitch_y = 32.735;
+                    //g_field.shot_x_count = 6;
+                    //g_field.shot_y_count = 5;
+
+                    //double resultX = Calculate_ZeroSpan_HighLow_Scale(-50d, 50d, point_x_pos, g_field.pitch_x, g_field.pitch_y);
+                    //double resultY = Calculate_ZeroSpan_HighLow_Scale(-50d, 50d, point_y_pos, g_field.pitch_x, g_field.pitch_y);
+
+                    //double point_x_pos = g_field.offset_x + (targetX / 1000.0 - g_field.pitch_x / 2.0);
+                    //double point_y_pos = g_field.offset_y + (targetY / 1000.0 - g_field.pitch_y / 2.0);
+
+                    // point_x_pos = 0d;
+                    // point_y_pos = 0d;
+
+                    specPoints.Add(point_x_pos, point_y_pos, "", Color.Red);
+                }
+            }
         }
 
 
