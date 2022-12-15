@@ -338,7 +338,7 @@ namespace TChartSampleTest
 
             sp.Title = title;
             sp.Style = ShapeStyles.Rectangle;
-            sp.Color = Color.Yellow;
+            sp.Pen.Color = Color.Silver;
             sp.Transparency = 40;
             sp.Transparent = true;
             sp.Active = true;
@@ -362,7 +362,8 @@ namespace TChartSampleTest
 
             sp.Title = title;
             sp.Style = ShapeStyles.Rectangle;
-            sp.Color = Color.Blue;
+            sp.Pen.Color = Color.Red;
+           // sp.Color = Color.Blue;
             sp.Transparency = 40;
             sp.Transparent = true;
             sp.Active = true;
