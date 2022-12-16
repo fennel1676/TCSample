@@ -589,6 +589,7 @@ namespace TChartSampleTest
             if (fScaleData < fScaleLow)
                 fScaleData = fScaleLow;
             return fScaleData;
+
         }
     }
 }
